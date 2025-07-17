@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from cars.views import view_cars
+from cars.views import view_cars,search_car_by_url, create_new_car, put_car, create_car_w_forms
+from django.conf.urls.static import static, settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',view_cars),
-]
+    path('home/', search_car_by_url, name = 'search_car_by_url'),
+    path('create/', create_new_car, name = 'create_new_car'),
+    path('att/', put_car, name = 'put_car'),
+    path('create_with_forms/',create_car_w_forms, name = 'criar_carro_com_form'),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

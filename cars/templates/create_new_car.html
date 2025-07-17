@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Criar novo carro</h1>
+    {% block content %}
+    <form method="POST" action="{% url 'create_new_car' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label> Model: </label>
+            <input type="text" name="model">
+        <label> Brand: </label>
+            <select id="brand" name="brand">
+                <option value="chevrolet">CHEVROLET</option>
+                <option value="ford">FORD</option>
+                <option value="nissan">NISSAN</option>
+                <option value="citroen">CITROEN</option>
+            </select>
+        <label> Year: </label>
+            <input type="number" name="year">
+        <label> IMAGE: </label>
+            <input type="file" name="image" accept="image/*">
+        <button type="submit">Enviar dados</button>
+    </form>
+    {% endblock %}
+</body>
+</html>
